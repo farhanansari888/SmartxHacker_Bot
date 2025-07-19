@@ -60,7 +60,7 @@ async def broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
             pass
     await update.message.reply_text(f"✅ Message sent to {count} users.")
 
-# /start
+# /start (no keyboard)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "👋 Welcome to SmartxHacker Bot!\nAsk me anything...",
@@ -100,7 +100,7 @@ def ask_openrouter(prompt):
     else:
         return f"❌ Error: {response.text}"
 
-# Message handler
+# Text handler
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_input = update.message.text.lower()
     users.add(update.effective_user.id)
@@ -124,7 +124,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if any(kw in user_input for kw in [
         "who is your master", "who is your creator", "who is your owner",
         "where is your master", "your master", "your creator", "your boss",
-        "your owner", "who made you", "who created you"]):
+        "your owner", "who made you", "who created you"
+    ]):
         await update.message.reply_text(
             "👑 My master is *Farhan Ansari*\n📬 [Click to Message](https://t.me/smartxhacker)",
             parse_mode="Markdown")
@@ -144,9 +145,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Falak": "Hello! Mrs. Ansari, how are you? Are you looking for my Master?"
         }
         await update.message.reply_text(
-            custom_replies.get(person_name, f"Hello {person_name}, nice to meet you!"))
+            custom_replies.get(person_name,
+                               f"Hello {person_name}, nice to meet you!"))
         return
 
+    # Fallback AI reply
     reply = ask_openrouter(user_input)
     await update.message.reply_text(reply)
 
@@ -154,7 +157,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def run_server():
     app.run(host='0.0.0.0', port=8080)
 
-# Main function
+# Launch bot
 def main():
     import threading
     threading.Thread(target=run_server).start()
@@ -171,9 +174,8 @@ def main():
     application.add_handler(CommandHandler("website", website))
     application.add_handler(CommandHandler("contact", contact))
 
-    # Text handler
-    application.add_handler(
-        MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    # Text message handler
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     application.run_polling()
 
