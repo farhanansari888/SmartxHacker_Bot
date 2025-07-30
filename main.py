@@ -13,7 +13,7 @@ from telegram.ext import (
 )
 
 # === Environment Variables ===
-TELEGRAM_BOT_TOKEN = os.environ.get("8036257083:AAFsJfmP-S0PwPraATrV-br1F-nKaNXbBJg")
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
 # === Flask App ===
