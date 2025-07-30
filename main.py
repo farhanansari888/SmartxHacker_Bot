@@ -81,7 +81,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("👋 Welcome to SmartxHacker Bot!\nAsk me anything...", reply_markup=ReplyKeyboardRemove())
 
 async def download(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("📥 Download Smart Tunnel App:\nhttps://smarttunnel.in/smarttunnel.apk")
+    await update.message.reply_text("📥 Download Smart Tunnel App:\nhttps://smarttunnel.in/smarttunnel.html")
 
 async def website(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("🌐 Visit official site:\nhttps://smarttunnel.in")
@@ -122,6 +122,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if "introduce yourself" in user_input:
         return await update.message.reply_text("I'm SmartxHacker's Assistant, created to help with questions, problems, learning, or just chatting! ✨")
 
+    if "introduce" in user_input:
+        return await update.message.reply_text("I'm SmartxHacker's Assistant, created to help with questions, problems, learning, or just chatting! ✨")
+
     if "download app" in user_input:
         return await update.message.reply_text("📥 Download Smart Tunnel App:\nhttps://smarttunnel.in/smarttunnel.apk")
 
@@ -134,7 +137,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if any(kw in user_input for kw in ["smart tunnel", "smart tunnel app", "download tunnel"]):
         return await update.message.reply_text("📥 Download Smart Tunnel App:\nhttps://smarttunnel.in/smarttunnel.apk")
 
-    if any(kw in user_input for kw in ["who is your master", "who is your creator", "who is your owner", "your master",
+    if any(kw in user_input for kw in ["who is your master", "master", "who is your creator", "who is your owner", "your master",
         "your creator", "your boss", "your owner", "who made you", "who created you"]):
         return await update.message.reply_text("👑 My master is Farhan Ansari\n📬 [Click to Message](https://t.me/smartxhacker)", parse_mode="Markdown")
 
@@ -156,7 +159,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         person_name = match.group(2).capitalize()
         custom_replies = {
             "Farhan": "Hello Sir, Welcome 😎",
-            "Krishna": "Hello Krishna! Welcome to the bot.",
             "Falak": "Hello Mrs. Ansari, how are you? Are you looking for my Master?"
         }
         return await update.message.reply_text(custom_replies.get(person_name, f"Hello {person_name}, nice to meet you!"))
