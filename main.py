@@ -131,6 +131,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if "introduce yourself" in user_input:
         return await update.message.reply_text("I'm SmartxHacker's Assistant, created to help with questions, problems, learning, or just chatting! ✨")
 
+    if "who are you" in user_input:
+        return await update.message.reply_text("I'm SmartxHacker's Assistant, created to help with questions, problems, learning, or just chatting! ✨")
+
     if "introduce" in user_input:
         return await update.message.reply_text("I'm SmartxHacker's Assistant, created to help with questions, problems, learning, or just chatting! ✨")
 
