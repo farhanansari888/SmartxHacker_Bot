@@ -24,8 +24,8 @@ def home():
 
 # Admin & User Tracking
 users = set()
-ADMIN_IDS = [6838940621]  
-GIRLFRIEND_ID = 6748564450 
+ADMIN_IDS = [6838940621]  # Replace with your Telegram ID
+GIRLFRIEND_ID = 6748564450  # Replace with her actual Telegram ID
 
 # OpenRouter AI
 def ask_openrouter(prompt):
@@ -36,7 +36,7 @@ def ask_openrouter(prompt):
         "HTTP-Referer": "https://t.me/smartxhacker_bot"
     }
     data = {
-        "model": "deepseek/deepseek-r1-0528:free",
+        "model": "mistralai/mistral-small-3.2-24b-instruct:free",
         "messages": [
             {"role": "system", "content": "You are a helpful assistant that always replies in English."},
             {"role": "user", "content": prompt}
@@ -112,6 +112,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "📬 [Click here to message your overlord](https://t.me/smartxhacker) 😎"
         ]
         return await update.message.reply_text(random.choice(replies), parse_mode="Markdown")
+
+    if any(kw in user_input for kw in [
+        "when he will come online", "kab online aayega", "he is offline", "when will he come", "he will come online", "he is not online", "is he online", "he's offline", "he is not available"
+    ]):
+        return await update.message.reply_text("💤 He's probably coding in his dreams... He'll be back when the stars align. 🌌")
+
 
     if "introduce yourself" in user_input:
         return await update.message.reply_text("I'm SmartxHacker's Assistant, created to help with questions, problems, learning, or just chatting! ✨")
