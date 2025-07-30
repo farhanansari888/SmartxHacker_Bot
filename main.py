@@ -109,8 +109,17 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "🕶️ My boss? Probably sipping coffee while I do all the work!",
             "💻 Farhan Ansari? Probably taking a nap 🙂",
             "📡 My master is currently offline. Please try again after charging him.",
-            "👨‍💻 I'm basically a smart parrot built by Farhan Ansari. Blame him!",
-            "📬 [Click here to message your overlord](https://t.me/smartxhacker) 😎"
+            "👨‍💻 I'm basically a smart parrot built by Farhan Ansari. Blame him! I don't know where is he.",
+            "📬 [Click here to message smartxhacker](https://t.me/smartxhacker) 😎"
+            "🧘‍♂️ He's in deep meditation, trying to unlock the next tech breakthrough.",
+            "💤 My master is currently in sleep mode. Try rebooting him with coffee.",
+            "👾 He's fighting off a swarm of bugs with just one semicolon.",
+            "🚀 Farhan went offline to upgrade his brain firmware. ETA unknown.",
+            "🧠 He's currently uploading his consciousness to the cloud...",
+            "👓 I think he vanished into his code again. Happens a lot!",
+            "🔧 My creator is tuning some secret AI... or just procrastinating.",
+            "💡 He's ideating something genius or watching cat videos – who knows?",
+            "⏳ He's in a time loop debugging the past. Might return soon.",
         ]
         return await update.message.reply_text(random.choice(replies), parse_mode="Markdown")
 
